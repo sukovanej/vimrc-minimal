@@ -1,0 +1,6 @@
+[submodule "pack/my-packages/start/haskell-vim"]
+	path = pack/my-packages/start/haskell-vim
+	url = https://github.com/neovimhaskell/haskell-vim.git
+[submodule "pack/my-packages/start/vim-go"]
+	path = pack/my-packages/start/vim-go
+	url = https://github.com/fatih/vim-go.git
