@@ -11,6 +11,8 @@ set shiftwidth=4
 set expandtab
 set nowrap
 set scrolloff=10
+set splitbelow
+set splitright
 
 nnoremap <C-c><C-c> :noh<cr>
 
