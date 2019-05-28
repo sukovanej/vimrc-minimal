@@ -18,10 +18,10 @@ set undodir=~/.vim/undodir
 
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
-Plug 'vim-python/python-syntax.git'
+Plug 'vim-python/python-syntax'
 Plug 'elixir-editors/vim-elixir'
-Plug 'fatih/vim-go.git'
-Plug 'christoomey/vim-tmux-navigator.git'
+Plug 'fatih/vim-go'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 nnoremap <C-c><C-c> :noh<cr>
