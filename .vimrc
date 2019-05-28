@@ -8,11 +8,13 @@ colorscheme focuspoint
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
-set expandtab
+set expandtab 
 set nowrap
-set scrolloff=10
-set splitbelow
-set splitright
+set scrolloff=10 " Gap from the top/bottom when scrolling
+set splitbelow " Natural split
+set splitright " Natural split
+set undofile " Maintain undo history between sessions
+set undodir=~/.vim/undodir
 
 nnoremap <C-c><C-c> :noh<cr>
 
