@@ -1,6 +1,7 @@
 set clipboard=unnamed
 set number
 set relativenumber
+let mapleader = ','
 
 syntax on
 colorscheme focuspoint
@@ -18,14 +19,18 @@ set undodir=~/.vim/undodir
 
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
-Plug 'vim-python/python-syntax'
-Plug 'elixir-editors/vim-elixir'
-Plug 'fatih/vim-go'
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'vim-python/python-syntax' " Python
+Plug 'elixir-editors/vim-elixir' " Elixir
+Plug 'fatih/vim-go' " Go
+Plug 'christoomey/vim-tmux-navigator' " Tmux
+Plug 'davidhalter/jedi-vim' " python autocompletion
+Plug 'wsdjeg/FlyGrep.vim' " project wide search
 call plug#end()
 
 nnoremap <C-c><C-c> :noh<cr>
+nnoremap <leader>/ :FlyGrep<cr>
 
+" Python config
 let g:python_highlight_all = 1
 
 nnoremap <C-J> <C-W><C-J>
