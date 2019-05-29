@@ -3,9 +3,6 @@ set number
 set relativenumber
 let mapleader = ','
 
-syntax on
-colorscheme focuspoint
-
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
@@ -25,7 +22,11 @@ Plug 'fatih/vim-go' " Go
 Plug 'christoomey/vim-tmux-navigator' " Tmux
 Plug 'davidhalter/jedi-vim' " python autocompletion
 Plug 'wsdjeg/FlyGrep.vim' " project wide search
+Plug 'ap/vim-buftabline' " show buffers
 call plug#end()
+
+syntax on
+colorscheme kuroi
 
 nnoremap <C-c><C-c> :noh<cr>
 nnoremap <leader>/ :FlyGrep<cr>
