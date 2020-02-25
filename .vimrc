@@ -16,7 +16,9 @@ set undodir=~/.vim/undodir
 
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
-Plug 'vim-python/python-syntax' " Python
+Plug 'kien/rainbow_parentheses.vim' " parentheses
+Plug 'guns/vim-clojure-highlight' " Clojure
+Plug 'tpope/vim-fireplace' " Clojure
 Plug 'elixir-editors/vim-elixir' " Elixir
 Plug 'fatih/vim-go' " Go
 Plug 'christoomey/vim-tmux-navigator' " Tmux
@@ -30,20 +32,24 @@ Plug 'hashivim/vim-terraform' " Terraform plugin
 Plug 'isobit/vim-caddyfile' " caddy support
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocomplete
 Plug 'mhinz/vim-startify'
 Plug 'airblade/vim-gitgutter' " git
+Plug 'mxw/vim-jsx' " jsx syntax highlight
+Plug 'pangloss/vim-javascript' " javascript
+Plug '/usr/local/opt/fzf' " fzf
+Plug 'tarekbecker/vim-yaml-formatter' " yaml formatting
+Plug 'HerringtonDarkholme/yats.vim' " typescript
+Plug 'aklt/plantuml-syntax' " PlatnUML syntax highlight
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " Python syntax highlight
 call plug#end()
 
+" Common
 syntax on
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 
 nnoremap <C-c><C-c> :noh<cr>
 nnoremap <leader>/ :FlyGrep<cr>
-
-" Python config
-let g:python_highlight_all = 1
 
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -59,6 +65,11 @@ endif
 nnoremap gc :bdelete<cr>
 nnoremap gn :bn<cr>
 nnoremap gN :bp<cr>
+nnoremap <leader>E :Ex<cr>
+
+
+" Python config
+let g:python_highlight_all = 1
 
 " Haskell config
 let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
@@ -69,8 +80,6 @@ let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
-let g:spacevim_debug_level='ERROR'
-
 " Disable haskell-vim omnifunc
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
@@ -78,12 +87,8 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 " Markdown config
 let g:vim_markdown_folding_disabled = 1
 
-" Deoplete configuration
-" let g:deoplete#enable_at_startup = 1
 let g:tex_conceal = ""
-let g:conceallevel = 0
-
-au BufReadPost *.gisp set syntax=lisp
+let g:indentLine_conceallevel = 0
 
 " gitgutter config
 let bg = synIDattr(hlID("Normal"), "bg")
@@ -92,3 +97,29 @@ highlight GitGutterAdd ctermbg=bg
 highlight GitGutterChange ctermbg=bg
 highlight GitGutterDelete ctermbg=bg
 highlight GitGutterChangeDelete ctermbg=bg
+
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+nmap ghp <Plug>(GitGutterPreviewHunk)
+
+" fzf config
+nmap <leader>, :FZF<cr>
+
+" tab size settings
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab " formating for yaml files
+autocmd FileType vue setlocal ts=2 sts=2 sw=2 expandtab " formating for vue files
+autocmd FileType ts setlocal ts=2 sts=2 sw=2 expandtab " formating for ts files
+autocmd FileType js setlocal ts=2 sts=2 sw=2 expandtab " formating for js files
+autocmd FileType sass setlocal ts=2 sts=2 sw=2 expandtab " formating for sass files
+
+" in popup menu remap C-n / C-p -> C-j / C-k
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+
+" clojure
+autocmd VimEnter *       RainbowParenthesesToggle
+autocmd Syntax   clojure RainbowParenthesesLoadRound
+autocmd Syntax   clojure RainbowParenthesesLoadSquare
+autocmd Syntax   clojure RainbowParenthesesLoadBraces
+nnoremap <leader>e :Eval<cr>
+nnoremap <leader>r :Require<cr>
