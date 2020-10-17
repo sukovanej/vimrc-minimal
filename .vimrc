@@ -41,6 +41,7 @@ Plug 'integralist/vim-mypy'  " Python mypy integration
 Plug 'fisadev/vim-isort' " Isort
 Plug 'jmcantrell/vim-virtualenv' " virtualenv
 Plug 'psf/black', { 'branch': 'stable' } " black
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " Python syntax highlight
 
 " airline
 Plug 'vim-airline/vim-airline' " airline
