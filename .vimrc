@@ -44,9 +44,8 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" C#
-" Plug 'OmniSharp/omnisharp-vim'
-" Plug 'OrangeT/vim-csharp'
+" Prisma syntax hightlighting
+Plug 'pantharshit00/vim-prisma'
 
 " Haskell
 Plug 'pbrisbin/vim-syntax-shakespeare'
@@ -63,9 +62,6 @@ Plug 'tpope/vim-repeat'
 
 " rainbow parentheses
 Plug 'luochen1990/rainbow'
-
-" auto-pairs
-" Plug 'jiangmiao/auto-pairs'
 
 " clojure
 Plug 'Olical/conjure'  " conjure
@@ -91,11 +87,6 @@ Plug 'airblade/vim-gitgutter' " git
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Python
-Plug 'alfredodeza/pytest.vim' " pytest
-Plug 'integralist/vim-mypy'  " Python mypy integration
-Plug 'fisadev/vim-isort' " Isort
-Plug 'jmcantrell/vim-virtualenv' " virtualenv
-Plug 'psf/black', { 'branch': 'stable' } " black
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " Python syntax highlight
 
 " airline
@@ -204,8 +195,7 @@ nnoremap gN :bp<cr>
 " Python config
 let g:python_highlight_all = 1
 autocmd FileType python nnoremap <leader>p :Pytest file verbose<cr>
-autocmd FileType python nnoremap <leader>i :Isort<cr>
-autocmd FileType python nnoremap <leader>b :Black<cr>
+autocmd FileType python nnoremap <leader>i :CocCommand pyright.organizeimports<cr>
 autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab " formating for html files
 
 " Markdown config
@@ -236,8 +226,6 @@ let g:rainbow_active = 1
 
 " Haskell
 au BufNewFile,BufRead *.hs setlocal filetype=haskell
-autocmd FileType haskell nnoremap <space>f :%!stylish-haskell<cr>
-autocmd FileType haskell set formatprg=stylish-haskell
 
 " Terminal
 tnoremap <Esc> <C-\><C-n>
