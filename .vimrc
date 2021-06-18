@@ -1,5 +1,6 @@
 " TextEdit might fail if hidden is not set.
 set hidden
+" set term=screen-256color
 
 " Some servers have issues with backup files, see #649.
 set nobackup
@@ -51,7 +52,7 @@ Plug 'pantharshit00/vim-prisma'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 
 " Git
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 
 " tmux navigation
 Plug 'christoomey/vim-tmux-navigator'
@@ -157,6 +158,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Fzf
 nnoremap <space><space> :FZF<cr>
 nnoremap <space>a :Ag<cr>
+nnoremap <space>b :Buffers<cr>
 
 " Shut off completion messages
 set shortmess+=c
